@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burn It All Down - AWS Resource Cleanup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <h1>🔥 Burn It All Down</h1>
+            <p class="subtitle">AWS Resource Cleanup Tool</p>
+
+            <div class="input-group">
+                <label for="profile">AWS Profile Name:</label>
+                <input type="text" id="profile" placeholder="default" required>
+            </div>
+
+            <div class="input-group">
+                <label for="region">AWS Region:</label>
+                <input type="text" id="region" placeholder="us-east-1" required>
+            </div>
+
+            <button id="start-inventory" class="btn btn-primary">Start Inventory</button>
+            <div id="loading" class="loading hidden">Running inventory...</div>
+            <div id="error" class="error hidden"></div>
+        </div>
+
+        <!-- Resource Screen -->
+        <div id="resource-screen" class="screen">
+            <div class="header">
+                <h2>Resources Found</h2>
+                <div class="header-info">
+                    <span id="account-info"></span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="select-all" class="btn btn-secondary">Select All</button>
+                <button id="deselect-all" class="btn btn-secondary">Deselect All</button>
+                <button id="burn-button" class="btn btn-danger">🔥 Burn It All Down...</button>
+                <button id="refresh-inventory" class="btn btn-secondary">Refresh Inventory</button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs" id="tabs"></div>
+
+            <!-- Tab Content -->
+            <div class="tab-content" id="tab-content"></div>
+
+            <div id="deletion-results" class="results hidden">
+                <h3>Deletion Results</h3>
+                <div id="results-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
